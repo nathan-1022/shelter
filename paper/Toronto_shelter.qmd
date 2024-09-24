@@ -1,0 +1,125 @@
+---
+title: "Study on the Toronto Shelter Capacity and Occupation"
+subtitle: "Does Toronto Shelter Have Enough Rooms for Homeless"
+author: 
+  - Zhu zhengjie
+thanks: "Code and data are available at: LINK."
+date: today
+date-format: long
+abstract: "Analysis of the capacity and occupancy of these shelters determine if adequate protection is offered. The last two years of shelter data reveals that most shelters are operating near full capacity. This near saturation of occupancy indicates that the shelter services provided by the government are insufficient. Therefore, there is a call for the government to increase the number of shelters to reduce homelessness."
+format: pdf
+number-sections: true
+toc: true
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(dplyr)
+library(knitr)
+```
+
+
+# Introduction
+
+The Toronto government provides shelter services for the homeless to help them through the cold winter months, but the adequacy of this protection is determined by the capacity and occupancy of the shelters. The Open Toronto database records operational details of shelters in the Toronto area, including the number of rooms available and their actual usage daily. Analysis of this data from Open Toronto [@opendatatoronto] can aid the government in assessing whether the current shelter capacity is sufficient and preparing in advance for the upcoming winter. However, the transient nature of the homeless population, often moving between cities, means that shelter data might not accurately reflect the real demand, potentially leading to discrepancies between study findings and actual conditions.
+
+By analyzing the shelter data over the past two years, it's evident that the occupancy of most shelters is close to their capacity, indicating that the services provided are insufficient. Therefore, there is a call for the government to increase the number of shelters to decrease homelessness. Increasing shelter not only provides the homeless with a place to stay but also reduces their presence on the streets, thereby improving public safety in Toronto.
+
+This article covers several key aspects: @sec-data introduces the data and its sources; @sec-analysis analyzes shelter data by different regions and categories to identify disparities in occupancy rates. Finally, based on the findings, @sec-discussion offers recommendations to the Toronto government on addressing the shortage of shelter supplies.
+
+
+# Data {#sec-data}
+
+This article utilizes data from Open Toronto regarding the occupancy rates and capacity of daytime and overnight shelter services [@opendatatoronto]. These data provide a list of active overnight shelters from the Toronto Shelter Management Information System database, updated daily and including details such as the shelter's location, classification, occupancy, and capacity. The Toronto area encompasses five regions: "Etobicoke," "North York," "Scarborough," "Toronto," and "Vaughan." Shelter locations are fixed and can be identified by their registered addresses. During registration, shelters specify their target demographic, thus enabling the classification of shelters into categories like "Families," "Men Mixed," "Adult," "Women," and "Youth," which only accept homeless individuals corresponding to these categories. Both Shelter Location and Sector are categorical data.
+
+Considering potential maintenance issues that may render some rooms unusable, the capacity in the database is variable, reflecting the actual number of rooms available each day. To ensure measurement accuracy, occupancy rates are considered based on overnight stays, with occupancy measured at 4 AM the following day. For example, the number of occupants on January 1 is recorded at 4 AM on January 2. Both shelter capacity and occupancy are numeric variables, with occupancy always being less than or equal to capacity.
+
+
+Open Toronto data is a government-funded database open to the public. It has the characteristics of reliable data and daily updates. Therefore, it is necessary and sufficient to use Open Toronto data to study shelter occupancy. Currently, no other databases have been found to provide shelter occupancy data in the Toronto area. In terms of data cleaning, considering that there are missing results in the database, we cannot track the reasons for missing data, so this paper deletes the missing observations. After processing, the data includes 8719 observations and 4 variables.
+
+
+In the process of data processing and plotting, we will use different packages in R software [@citeR], including the following libraries: tidyverse [@tidyverse],knitr [@knitr],dplyr [@dplyr] etc.  
+
+@fig-shelter shows the number of shelters and sectors in different areas. Toronto has the largest number of shelters, and most of them are Families shelters. North York is second, but the shelter types in North York are mainly Mixed Adult. All shelters in Vaughan and Etobicoke are Mixed Adult. @fig-shelter shows that there are huge differences in the types and numbers of shelters. Since shelters only accept people of the corresponding categories, unreasonable classification may cause a waste of shelter resources.
+
+
+
+```{r}
+#| label: fig-shelter
+#| fig-cap: Shelter sectors by location
+#| echo: false
+#| warning: false
+shelter_data <- read_csv(here::here("data/analysis_data/analysis_shelter_data.csv"))
+
+ggplot(shelter_data, aes(x = LOCATION_CITY, fill = SECTOR)) +
+  geom_bar(alpha = 0.8) +
+  theme_minimal() +
+  coord_flip() +
+  xlab("Location City")
+```
+
+
+
+
+```{r}
+#| label: fig-capacity
+#| fig-cap: Shelter room capacity 
+#| echo: false
+#| warning: false
+ggplot(shelter_data, aes(x = CAPACITY_ACTUAL_ROOM)) +
+  geom_histogram(bins = 10, alpha = 0.7, color = "black") +
+  labs(title = "Histogram of capacity actual room by Sector",
+       x = "Capacity Actual Room",
+       y = "Frequency") +
+  theme_minimal() 
+```
+
+
+
+
+```{r}
+#| label: fig-occupied
+#| fig-cap: Shelter occupied room
+#| echo: false
+#| warning: false
+ggplot(shelter_data, aes(x = CAPACITY_ACTUAL_ROOM)) +
+  geom_histogram(bins = 10, alpha = 0.7, color = "black") +
+  labs(title = "Histogram of occupied actual room by Sector",
+       x = "Occupied Actual Room",
+       y = "Frequency") +
+  theme_minimal() 
+```
+
+@fig-capacity reflects the capacity situation of shelters. The figure shows that the number of rooms provided by shelters is mainly concentrated below 100, with only a small number of shelters having a capacity exceeding 200. The limited availability of rooms in shelters may be one of the reasons for the resource scarcity in shelters.
+
+@fig-occupied reflects the occupancy situation of shelters. Figure 3 has a strong similarity to Figure 2, indicating that the occupancy rate of shelters may be too high, leading to every available capacity room being occupied.
+
+
+# Analysis {#sec-analysis}
+
+
+
+# Discussion {#sec-discussion}
+
+
+
+\newpage
+
+\appendix
+
+# Appendix {-}
+
+
+
+
+\newpage
+
+
+# References
+
+
