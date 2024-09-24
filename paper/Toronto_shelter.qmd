@@ -3,7 +3,7 @@ title: "Study on the Toronto Shelter Capacity and Occupation"
 subtitle: "Does Toronto Shelter Have Enough Rooms for Homeless"
 author: 
   - Zhu zhengjie
-thanks: "Code and data are available at: LINK."
+thanks: "Code and data are available at: https://github.com/nathan-1022/shelter.git"
 date: today
 date-format: long
 abstract: "Analysis of the capacity and occupancy of these shelters determine if adequate protection is offered. The last two years of shelter data reveals that most shelters are operating near full capacity. This near saturation of occupancy indicates that the shelter services provided by the government are insufficient. Therefore, there is a call for the government to increase the number of shelters to reduce homelessness."
