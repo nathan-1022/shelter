@@ -3,7 +3,7 @@ title: "Toronto Shelter Capacity and Occupation"
 subtitle: ""
 author: 
   - Zhu zhengjie
-thanks: "Code and data are available at: LINK."
+thanks: "Code and data are available at: https://github.com/nathan-1022/shelter.git"
 date: today
 date-format: long
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
