@@ -30,7 +30,7 @@ The Toronto government provides shelter services for the homeless to help them t
 
 By analyzing the shelter data over the past two years, it's evident that the occupancy of most shelters is close to their capacity, indicating that the services provided are insufficient. Therefore, there is a call for the government to increase the number of shelters to decrease homelessness. Increasing shelter not only provides the homeless with a place to stay but also reduces their presence on the streets, thereby improving public safety in Toronto.
 
-This article covers several key aspects: @sec-data introduces the data and its sources; @sec-analysis analyzes shelter data by different regions and categories to identify disparities in occupancy rates. Finally, based on the findings, @sec-discussion offers recommendations to the Toronto government on addressing the shortage of shelter supplies.
+This article covers several key aspects: @sec-data introduces the data and its sources and some analysis;  Finally, based on the data analysis, @sec-result offers recommendations to the Toronto government on addressing the shortage of shelter supplies.
 
 
 # Data {#sec-data}
@@ -101,19 +101,9 @@ ggplot(shelter_data, aes(x = CAPACITY_ACTUAL_ROOM)) +
 @fig-occupied reflects the occupancy situation of shelters. Figure 3 has a strong similarity to Figure 2, indicating that the occupancy rate of shelters may be too high, leading to every available capacity room being occupied.
 
 
-# Analysis {#sec-analysis}
+# Result {#sec-result}
 
-
-
-# Discussion {#sec-discussion}
-
-
-
-\newpage
-
-\appendix
-
-# Appendix {-}
+Through the above data analysis, the number of shelters in the Toronto area is the largest, and most sectors are family. The family shelters provided in the Toronto area may result in some single homeless people having less opportunities to get shelter help, thus causing social inequality. At the same time, the distribution of capacity and occupied room is approximately the same, and the capacity and occupied room of most shelters are equal. This phenomenon shows that the shelters in the Toronto area are insufficient, and the government needs to find ways to provide more shelters to meet the needs of homeless people. Considering the great mobility of homeless people, this paper cannot obtain the characteristics of homeless mobility. Therefore, the analysis results may not meet the real-time requirements of homeless people. In subsequent research, it is possible to consider adding the impact of homeless people's migration between cities.
 
 
 
